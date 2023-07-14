@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">kurs</string>
+    <string name="ok_but" translatable="false">OK</string>
+    <string name="data_input">Data input</string>
+
+
 </resources>
