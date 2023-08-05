@@ -12,9 +12,8 @@ import com.example.kurs.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bindingClass: ActivityMainBinding
-    val lostArray = arrayListOf<Int>(10000, 20000, 30000, 5000, 120, 250)
-    val earnArray = arrayListOf<Int>(30000, 60000, 8000, 200, 1220, 3230)
-    val resultArray = arrayListOf<String>("", "", "", "", "", "")
+    private lateinit var launcher: ActivityResultLauncher<Intent>
+    private lateinit var launcher2: ActivityResultLauncher<Intent>
 
 
     @SuppressLint("SetTextI18n")
@@ -22,37 +21,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
-        val names = resources.getStringArray(R.array.names)
-        for (i in 0..5) {
-            resultArray[i] = (earnArray[i] - lostArray[i]).toString() + " " + names[i]
+        launcher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == RESULT_OK) {
+                    val data = result.data
+                }
+            }
+
+        bindingClass.bLog.setOnClickListener {
+            launcher.launch(Intent(this, MainActivity2::class.java))
         }
-        bindingClass.button.setOnClickListener {
-          when(bindingClass.edT.text.toString()){
-              names[0] -> {
-                  bindingClass.textView.text = resultArray[0]
-              }
-              names[1] -> {
-                    bindingClass.textView.text = resultArray[1]
-              }
-              names[2] -> {
-                  bindingClass.textView.text = resultArray[2]
-              }
-              names[3] -> {
-                  bindingClass.textView.text = resultArray[3]
-              }
-              names[4] -> {
-                  bindingClass.textView.text = resultArray[4]
-              }
-              names[5] -> {
-                  bindingClass.textView.text = resultArray[5]
-              }
-              else -> {
-                  bindingClass.textView.text = "Такого имени нет"}
-          }
+        launcher2 =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == RESULT_OK) {
+                    val data = result.data
+                }
+            }
 
-
-
-
+        bindingClass.bReg.setOnClickListener {
+            launcher2.launch(Intent(this, MainActivity3::class.java))
         }
+
+
     }
 }

@@ -4,4 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2"/>
+    tools:context=".MainActivity2">
+
+    <TextView
+        android:id="@+id/tVinfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Введите логин и пароль"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eDlog"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/eDlog"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148" />
+
+    <EditText
+        android:id="@+id/eDlog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Логин"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tVinfo" />
+
+    <EditText
+        android:id="@+id/eDpass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Пароль"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eDlog"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/eDlog"
+        app:layout_constraintTop_toBottomOf="@+id/eDlog"
+        app:layout_constraintVertical_bias="0.203" />
+
+    <Button
+        android:id="@+id/BLogBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eDpass"
+        app:layout_constraintStart_toStartOf="@+id/eDpass"
+        app:layout_constraintTop_toBottomOf="@+id/eDpass" />
+
+    <Button
+        android:id="@+id/bInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ввод"
+        app:layout_constraintBottom_toTopOf="@+id/BLogBack"
+        app:layout_constraintEnd_toEndOf="@+id/BLogBack"
+        app:layout_constraintStart_toStartOf="@+id/BLogBack"
+        app:layout_constraintTop_toBottomOf="@+id/eDpass" />
+</androidx.constraintlayout.widget.ConstraintLayout>

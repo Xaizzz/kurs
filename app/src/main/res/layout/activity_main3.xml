@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity3">
+
+    <TextView
+        android:id="@+id/tVinfoReg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Регистрация"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eTlog"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/eTlog"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <EditText
+        android:id="@+id/eTlog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Логин"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/eTpas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tVinfoReg"
+        app:layout_constraintVertical_bias="0.852" />
+
+    <EditText
+        android:id="@+id/eTpas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Пароль"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/eTpas2"
+        app:layout_constraintEnd_toEndOf="@+id/eTlog"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eTlog" />
+
+    <EditText
+        android:id="@+id/eTpas2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="224dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Повторите пароль"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eTpas"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eTpas" />
+
+    <Button
+        android:id="@+id/BRegBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/eTpas2"
+        app:layout_constraintStart_toStartOf="@+id/eTpas2"
+        app:layout_constraintTop_toBottomOf="@+id/eTpas2" />
+
+    <Button
+        android:id="@+id/bInputLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ввод"
+        app:layout_constraintBottom_toTopOf="@+id/BRegBack"
+        app:layout_constraintEnd_toEndOf="@+id/BRegBack"
+        app:layout_constraintStart_toStartOf="@+id/BRegBack"
+        app:layout_constraintTop_toBottomOf="@+id/eTpas2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

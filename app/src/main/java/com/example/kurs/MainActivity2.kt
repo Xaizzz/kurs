@@ -15,5 +15,17 @@ class MainActivity2 : AppCompatActivity() {
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.bInput.setOnClickListener {
+            if (binding.eDlog.text.toString() == "Penis" && binding.eDpass.text.toString() == "Big"){
+                binding.tVinfo.text = "Добро пожаловать!"
+            }else{
+                binding.tVinfo.text = "Доступ запрещен!"
+            }
+        }
+
+        binding.BLogBack.setOnClickListener {
+            finish()
+        }
+
     }
 }
