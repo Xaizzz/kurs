@@ -8,13 +8,22 @@ import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kurs.databinding.ActivityMainBinding
 import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bindingClass: ActivityMainBinding
-    private lateinit var launcher: ActivityResultLauncher<Intent>
-    private lateinit var launcher2: ActivityResultLauncher<Intent>
+    private val adapter = AnimalAdapter()
+    private val imageIdList = listOf(
+        R.drawable.jiraffe,
+        R.drawable.leopard,
+        R.drawable.zebra,
+        R.drawable.tiger,
+        R.drawable.panda
+    )
+    private var index = 0
 
 
     @SuppressLint("SetTextI18n")
@@ -22,33 +31,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
+        init()
 
     }
 
-    fun onClick(view: View) {
-        if (!test()) {
-            bindingClass.textView2.text = getResult()
-
-        }
-    }
-
-
-    private fun test(): Boolean {
-        if (bindingClass.TIETA.text.isNullOrEmpty() || bindingClass.TIETA2.text.isNullOrEmpty()) {
-            bindingClass.TIETA.error = "Заполните полностью"
-            bindingClass.TIETA2.error = "Заполните полностью"
-
-        }
-        return bindingClass.TIETA.text.isNullOrEmpty() || bindingClass.TIETA2.text.isNullOrEmpty()
-
-    }
-    private fun getResult(): String {
-        val A: Double
-        val B: Double
+    private fun init() {
         bindingClass.apply {
-            A = TIETA.text.toString().toDouble()
-            B = TIETA2.text.toString().toDouble()
+            RCview.layoutManager = GridLayoutManager(this@MainActivity, 2)
+            RCview.adapter = adapter
+            buttonAdd.setOnClickListener {
+                if (index > 4) index = 0
+                val animal = Animal(imageIdList[index], "Animal $index")
+
+                adapter.addAnimal(animal)
+                index++
+            }
         }
-        return sqrt((A * A + B * B)).toString()
     }
+
+
 }
+
