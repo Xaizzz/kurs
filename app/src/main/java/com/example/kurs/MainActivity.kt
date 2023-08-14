@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.kurs.databinding.ActivityMainBinding
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bindingClass: ActivityMainBinding
@@ -21,27 +22,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
-        launcher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.resultCode == RESULT_OK) {
-                    val data = result.data
-                }
-            }
 
-        bindingClass.bLog.setOnClickListener {
-            launcher.launch(Intent(this, MainActivity2::class.java))
+    }
+
+    fun onClick(view: View) {
+        if (!test()) {
+            bindingClass.textView2.text = getResult()
+
         }
-        launcher2 =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.resultCode == RESULT_OK) {
-                    val data = result.data
-                }
-            }
+    }
 
-        bindingClass.bReg.setOnClickListener {
-            launcher2.launch(Intent(this, MainActivity3::class.java))
+
+    private fun test(): Boolean {
+        if (bindingClass.TIETA.text.isNullOrEmpty() || bindingClass.TIETA2.text.isNullOrEmpty()) {
+            bindingClass.TIETA.error = "Заполните полностью"
+            bindingClass.TIETA2.error = "Заполните полностью"
+
         }
+        return bindingClass.TIETA.text.isNullOrEmpty() || bindingClass.TIETA2.text.isNullOrEmpty()
 
-
+    }
+    private fun getResult(): String {
+        val A: Double
+        val B: Double
+        bindingClass.apply {
+            A = TIETA.text.toString().toDouble()
+            B = TIETA2.text.toString().toDouble()
+        }
+        return sqrt((A * A + B * B)).toString()
     }
 }
